@@ -150,10 +150,10 @@ In Wayfinder, **Applications** are a way to model the elements of your applicati
     apiVersion: app.appvia.io/v2beta1
     kind: Application
     metadata:
-    	name: app-name-placeholder
+    	name: rbc-tst2
     spec:
 	    cloud: azure
-		name: app-name-placeholder
+		name: rbc-tst2
 	```
 Once you created your application, you can add components.
 
@@ -175,25 +175,25 @@ Within infra/azure-app.yml you should be able to find the below code. When modif
 apiVersion: app.appvia.io/v2beta1
 kind: AppComponent
 metadata:
-  name: app-name-placeholder-storage-account-app
+  name: rbc-tst2-storage-account-app
 spec:
-  application: app-name-placeholder
+  application: rbc-tst2
   container:
     containers:
     - env:
       - fromCloudResourceOutput:
-          componentName: app-name-placeholder-storage-account
+          componentName: rbc-tst2-storage-account
           output: SECONDARY_ACCESS_KEY
         name: PRIMARY_ACCESS_KEY
       - fromCloudResourceOutput:
-          componentName: app-name-placeholder-storage-account
+          componentName: rbc-tst2-storage-account
           output: NAME
         name: AZURE_STORAGE_ACCOUNT_NAME
       - fromCloudResourceOutput:
-          componentName: app-name-placeholder-storage-account
+          componentName: rbc-tst2-storage-account
           output: CONTAINER_NAME
         name: AZURE_CONTAINER_NAME
-      image: ghcr.io/digital-garage-icl/repo-name-placeholder:latest
+      image: ghcr.io/digital-garage-icl/student-rbc-tst2:latest
       name: ui
       ports:
       - containerPort: 3002
@@ -207,8 +207,8 @@ spec:
       port: 3002
     tls: true
   dependsOn:
-  -  app-name-placeholder-storage-account
-  name: app-name-placeholder-storage-account-app
+  -  rbc-tst2-storage-account
+  name: rbc-tst2-storage-account-app
   type: Container
 ```
 
@@ -231,9 +231,9 @@ You can read more about cloud resource [here](https://docs.appvia.io/wayfinder/s
 apiVersion: app.appvia.io/v2beta1
 kind: AppComponent
 metadata:
-  name: app-name-placeholder-storage-account
+  name: rbc-tst2-storage-account
 spec:
-  application: app-name-placeholder
+  application: rbc-tst2
   cloudResource:
     plan: azurerm-demo-storage-account
     variables:
@@ -241,7 +241,7 @@ spec:
       name: {{ NAME }}
       resource_group_name: terranetes
   key: storage
-  name: app-name-placeholder-storage-account
+  name: rbc-tst2-storage-account
   type: CloudResource
 ```
 
@@ -257,11 +257,11 @@ Create appenv.yaml and located in the infra/ folder.
 apiVersion: app.appvia.io/v2beta1
 kind: AppEnv
 metadata:
-  name: app-name-placeholder-dev
+  name: rbc-tst2-dev
 spec:
   name: dev
   stage: nonprod
-  application: app-name-placeholder
+  application: rbc-tst2
   cloud: azure
   clusterRef:
     group: compute.appvia.io
@@ -300,8 +300,8 @@ For more information about terranetes [here is the documentation](https://terran
 
  - Login to the cluster 
 
-	>  wf use workspace workspace-placeholder 
-	wf access env app-name-placeholder dev
+	>  wf use workspace 
+	wf access env rbc-tst2 dev
 
  - List all the pods
 

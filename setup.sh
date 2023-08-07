@@ -47,7 +47,7 @@ WORKSPACE_NAME=$1
 PERSONAL_GH_TOKEN=$2
 FULL_REPO_NAME="Digital-Garage-ICL/${SHORT_REPO_NAME}"
 # TODO - if you rename the app, you'll need to change this and re-run the script to make sure that the Workspace Access Token (WAT) has the correct permissions
-APP_NAME=app-name-placeholder
+APP_NAME=rbc-tst2
 # TODO - if you rename the environment, you'll need to change this and re-run the script to make sure that the Workspace Access Token (WAT) has the correct permissions
 ENVIRONMENT=dev
 

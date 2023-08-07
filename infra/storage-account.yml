@@ -1,9 +1,9 @@
 apiVersion: app.appvia.io/v2beta1
 kind: AppComponent
 metadata:
-  name: app-name-placeholder-storage-account
+  name: rbc-tst2-storage-account
 spec:
-  application: app-name-placeholder
+  application: rbc-tst2
   cloudResource:
     plan: azurerm-demo-storage-account
     variables:
@@ -11,5 +11,5 @@ spec:
       name: somethingrandom678u1828937
       resource_group_name: terranetes
   key: storage
-  name: app-name-placeholder-storage-account
+  name: rbc-tst2-storage-account
   type: CloudResource
